@@ -54,20 +54,60 @@ def on_draw():
     glRotatef(0, 1, 0, 0)
     
     
-    #small trio from right to left
+    #red central
     glPushMatrix()
-    glTranslatef(5, 0, 9)
+    glTranslatef(1, -2, 5)
     glRotatef(90, 1, 0, 0)
     mushroom00.draw(0.545, 0.000, 0.545)
     glPopMatrix()
 
-
+    #small guys right to left
     glPushMatrix()
-    glTranslatef(3, -1, 8)
+    glTranslatef(5, -3, 10)
     glRotatef(90, 1, 0, 0)
     mushroom01.draw(0.545, 0.000, 0.645)
     glPopMatrix()
     
+    glPushMatrix()
+    glTranslatef(-3, -3, 9)
+    glRotatef(90, 1, 0, 0)
+    mushroom01.draw(0.545, 0.000, 0.645)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-4, -3, 13)
+    glRotatef(90, 1, 0, 0)
+    mushroom01.draw(0.545, 0.000, 0.645)
+    glPopMatrix()
+    
+    #large backs
+    glPushMatrix()
+    glTranslatef(-35, 10, -90)
+    glRotatef(90, 1, 0, 0)
+    mushroom07.draw(0.294, 0.000, 0.510)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-120, 65, -150)
+    glRotatef(90, 1, 0, 0)
+    mushroom05.draw(0.641, 0.169, 0.886)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-15, 65, -170)
+    glRotatef(90, 1, 0, 0)
+    mushroom05.draw(0.641, 0.169, 0.886)
+    glPopMatrix()
+    
+    
+    
+    glPushMatrix()
+    glTranslatef(-50, 0, -80)
+    glRotatef(90, 1, 0, 0)
+    mushroom06.draw(0.641, 0.169, 0.886)
+    glPopMatrix()
+    
+    '''
     glPushMatrix()
     glTranslatef(2, 0, 6)
     glRotatef(90, 1, 0, 0)
@@ -130,7 +170,7 @@ def on_draw():
     glRotatef(90, 1, 0, 0)
     mushroom08.draw(0.641, 0.169, 0.886)
     glPopMatrix()
-
+    '''
 
 
 def setup():
@@ -165,8 +205,12 @@ def setup():
 
 
 setup()
-# tube = shapelib.ConicalCylinder(64, 2, 1.5, 1)
-mushroom00 = shapelib.Mushroom4(.25, 2, 2.5, .25)
+
+
+#large central
+mushroom00 = shapelib.Mushroom4(.2, 4, 4, .5)
+
+
 mushroom01 = shapelib.Mushroom5(.25, 1, 1.5, .2)
 mushroom02 = shapelib.Mushroom3(.25, 2, 2.5, .2)
 
@@ -175,12 +219,13 @@ mushroom03 = shapelib.Mushroom3(4, 20, 20, 4)
 
 mushroom04 = shapelib.Mushroom3(3, 15, 15, 2)
 
-mushroom05 = shapelib.Mushroom3(3, 15, 20, 1)
+mushroom05 = shapelib.Mushroom3(20, 50, 110, 10)
 
-#massive mushroom in back left
+
 mushroom07 = shapelib.Mushroom3(5, 25, 40, 5)
 
-mushroom06 = shapelib.Mushroom3(3, 10, 15, 2)
+#massive mushroom in back left
+mushroom06 = shapelib.Mushroom3(3, 20, 35, 3)
 
 mushroom08 = shapelib.Mushroom5(.25, 1.5, 2.5, .35)
 
