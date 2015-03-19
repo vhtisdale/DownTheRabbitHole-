@@ -2,7 +2,7 @@
 # created: 2/25/15
 
 # generic python libs
-from math import pi, sin, cos
+from math import pi, sin, cos, sqrt
 
 # open gl libs
 from pyglet.gl import *
@@ -155,6 +155,8 @@ class Tube(object):
 
   def draw(self, r, g, b):
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, vec(r, g, b, 1))
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, vec(1, 1, 1, 1))
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50)
     glCallList(self.list)
 
 class ConicalTube(object):
@@ -210,57 +212,80 @@ class ConicalTube(object):
 
   def draw(self, r, g, b):
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, vec(r, g, b, 1))
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, vec(1, 1, 1, 1))
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50)
     glCallList(self.list)
 
-class HemiSphere(object):
-  def __init__(self, slices, radius):
-    self.radius = radius
+# class Hemisphere(object):
+#   def __init__(self, slices, radius):
+#     self.radius = radius
 
-    # create the vertex and normal arrays
-    vertices = []
-    normals = []
-    
-    theta = 0
-    theta_step = (2*pi)/(slices-1)
+#     # create the vertex and normal arrays
+#     vertices = []
+#     normals = []
+#     r = float(radius)/(slices-1)
+#     u_step = 2 * pi / (slices - 1)
+#     v_step = pi / (slices - 1)
+#     u = 0.
+#     for i in range(slices):
+#       cos_u = cos(u)
+#       sin_u = sin(u)
+#       v = 0.
+#       for j in range(slices):
+#         cos_v = cos(v)
+#         sin_v = sin(v)
 
-    for i in range(slices):
-      cos_theta = cos(theta)
-      sin_theta = sin(theta)
+#         d1 = (radius * cos_v)
+#         x1 = d1 * cos_u
+#         y1 = d1 * sin_u
+#         z1 = radius * sin_v
 
-      vertices.extend([cos_theta*lower_radius, sin_theta*lower_radius, 0])
-      vertices.extend([cos_theta*upper_radius, sin_theta*upper_radius, height])
-      normals.extend([cos_theta, sin_theta, 0])
-      normals.extend([cos_theta, sin_theta, 0])
-      
-      theta += theta_step
+#         d2 = (radius-r * cos_v)
+#         x2 = d2 * cos_u
+#         y2 = d2 * sin_u
+#         z2 = radius-r * sin_v
 
-    # Create ctypes arrays of the lists
-    vertices = (GLfloat * len(vertices))(*vertices)
-    normals = (GLfloat * len(normals))(*normals)
+#         nx = cos_u * cos_v
+#         ny = sin_u * cos_v
+#         nz = sin_v
 
-    # Create a list of triangle indices.
-    indices = []
-    p = slices-1
-    for i in range(slices):
-      indices.extend([i*2, (i*2)+1, (p*2)+1])
-      indices.extend([p*2, i*2, (p*2)+1])
-      p = i
-    indices = (GLuint * len(indices))(*indices)
+#         vertices.extend([x1, y1, z1])
+#         normals.extend([nx, ny, nz])
+#         v += v_step
+#       radius -=
+#       u += u_step
 
-    # Compile a display list
-    self.list = glGenLists(1)
-    glNewList(self.list, GL_COMPILE)
+#     vertices = (GLfloat * len(vertices))(*vertices)
+#     normals = (GLfloat * len(normals))(*normals)
 
-    glPushClientAttrib(GL_CLIENT_VERTEX_ARRAY_BIT)
-    glEnableClientState(GL_VERTEX_ARRAY)
-    glEnableClientState(GL_NORMAL_ARRAY)
-    glVertexPointer(3, GL_FLOAT, 0, vertices)
-    glNormalPointer(GL_FLOAT, 0, normals)
-    glDrawElements(GL_TRIANGLES, len(indices), GL_UNSIGNED_INT, indices)
-    glPopClientAttrib()
+#     # Create a list of triangle indices.
+#     indices = []
+#     p = slices-1
+#     for i in range(slices):
+#       indices.extend([i*2, (i*2)+1, (p*2)+1])
+#       indices.extend([p*2, i*2, (p*2)+1])
+#       p = i
+#     indices = (GLuint * len(indices))(*indices)
 
-    glEndList()
+#     # Compile a display list
+#     self.list = glGenLists(1)
+#     glNewList(self.list, GL_COMPILE)
 
+#     glPushClientAttrib(GL_CLIENT_VERTEX_ARRAY_BIT)
+#     glEnableClientState(GL_VERTEX_ARRAY)
+#     glEnableClientState(GL_NORMAL_ARRAY)
+#     glVertexPointer(3, GL_FLOAT, 0, vertices)
+#     glNormalPointer(GL_FLOAT, 0, normals)
+#     glDrawElements(GL_TRIANGLES, len(indices), GL_UNSIGNED_INT, indices)
+#     glPopClientAttrib()
+
+#     glEndList()
+
+#   def draw(self, r, g, b):
+#     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, vec(r, g, b, 1))
+#     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, vec(1, 1, 1, 1))
+#     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50)
+#     glCallList(self.list)
 
 class Cylinder(object):
   def __init__(self, slices, height, radius):
@@ -288,8 +313,7 @@ class ConicalCylinder(object):
   def draw(self, r, g, b):
     self.lower_fan.draw(r, g, b)
     self.tube.draw(r, g, b)
-    glTranslatef(0,0,self.height)
-    glRotatef(180, 1, 0, 0)
+    glRotatef(180, 0, 0, 0)
     self.upper_fan.draw(r, g, b)
 
 class Mushroom(object):
