@@ -155,6 +155,8 @@ class Tube(object):
 
   def draw(self, r, g, b):
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, vec(r, g, b, 1))
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, vec(1, 1, 1, 1))
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50)
     glCallList(self.list)
 
 class ConicalTube(object):
@@ -210,9 +212,11 @@ class ConicalTube(object):
 
   def draw(self, r, g, b):
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, vec(r, g, b, 1))
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, vec(1, 1, 1, 1))
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50)
     glCallList(self.list)
 
-class HemiSphere(object):
+class Hemisphere(object):
   def __init__(self, slices, radius):
     self.radius = radius
 
@@ -220,20 +224,25 @@ class HemiSphere(object):
     vertices = []
     normals = []
     
-    theta = 0
     theta_step = (2*pi)/(slices-1)
+    rad_step = float(radius)/(slices-1)
 
     for i in range(slices):
+      theta = 0
+      height = 0
       cos_theta = cos(theta)
       sin_theta = sin(theta)
-
-      vertices.extend([cos_theta*lower_radius, sin_theta*lower_radius, 0])
-      vertices.extend([cos_theta*upper_radius, sin_theta*upper_radius, height])
-      normals.extend([cos_theta, sin_theta, 0])
-      normals.extend([cos_theta, sin_theta, 0])
       
+      for j in range(slices):
+        print rad_step
+        vertices.extend([cos_theta*(radius-(j*rad_step)), 
+              sin_theta*(radius-(j*rad_step)), height])
+        normals.extend([cos_theta, sin_theta, height])
+        
+      height += rad_step
       theta += theta_step
 
+    # print vertices
     # Create ctypes arrays of the lists
     vertices = (GLfloat * len(vertices))(*vertices)
     normals = (GLfloat * len(normals))(*normals)
@@ -261,6 +270,11 @@ class HemiSphere(object):
 
     glEndList()
 
+  def draw(self, r, g, b):
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, vec(r, g, b, 1))
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, vec(1, 1, 1, 1))
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50)
+    glCallList(self.list)
 
 class Cylinder(object):
   def __init__(self, slices, height, radius):
@@ -288,8 +302,7 @@ class ConicalCylinder(object):
   def draw(self, r, g, b):
     self.lower_fan.draw(r, g, b)
     self.tube.draw(r, g, b)
-    glTranslatef(0,0,self.height)
-    glRotatef(180, 1, 0, 0)
+    glRotatef(180, 0, 0, 0)
     self.upper_fan.draw(r, g, b)
 
 class Mushroom(object):
