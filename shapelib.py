@@ -318,3 +318,120 @@ class Mushroom(object):
     self.bottom.draw(r, g, b)
     glTranslatef(0, 0, self.bottom_height )
     self.top.draw(r, g, b)
+
+
+
+class Mushroom2(object):
+  def __init__(self, top_height, top_radius, bottom_height, bottom_radius):
+    self.top_height = top_height
+    self.top_radius = top_radius
+    self.bottom_height = bottom_height
+    self.bottom_radius = bottom_radius
+    self.top = ConicalCylinder(64, self.top_height*2, self.top_radius , self.top_radius* .5)
+    self.top2 = Cylinder(64, self.top_height * .5, self.top_radius)
+    self.bottom = ConicalCylinder(64, self.bottom_height, self.bottom_radius*1.5, self.bottom_radius )
+  
+  def draw(self, r, g, b):
+    self.bottom.draw(r, g, b)
+    glTranslatef(0, 0, self.bottom_height )
+    self.top2.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*2)
+    self.top.draw(r, g, b)
+
+class Mushroom3(object):
+  def __init__(self, top_height, top_radius, bottom_height, bottom_radius):
+    self.top_height = top_height
+    self.top_radius = top_radius
+    self.bottom_height = bottom_height
+    self.bottom_radius = bottom_radius
+    #top nob
+    self.top4 = ConicalCylinder(64, self.top_height*1.5, self.top_radius* .5 , self.top_radius*.25)
+    #bottom nob
+    self.top3 = ConicalCylinder(64, self.top_height*1.5, self.top_radius* .35 , self.bottom_radius)
+    #middle
+    self.top = ConicalCylinder(64, self.top_height*2, self.top_radius , self.top_radius* .5)
+    #bottom
+    self.top2 = Cylinder(64, self.top_height * .5, self.top_radius)
+    self.bottom = ConicalCylinder(64, self.bottom_height, self.bottom_radius*1.5, self.bottom_radius )
+        
+  def draw(self, r, g, b):
+    self.bottom.draw(r, g, b)
+    glTranslatef(0, 0, self.bottom_height )
+    self.top2.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*2)
+    self.top.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*1.5)
+    self.top3.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*3.5)
+    self.top4.draw(r, g, b)
+
+class Mushroom4(object):
+  def __init__(self, top_height, top_radius, bottom_height, bottom_radius):
+    self.top_height = top_height
+    self.top_radius = top_radius
+    self.bottom_height = bottom_height
+    self.bottom_radius = bottom_radius
+    #top nob
+    self.top4 = ConicalCylinder(64, self.top_height*1.5, self.top_radius* .5 , self.top_radius*.25)
+    #bottom nob
+    self.top3 = ConicalCylinder(64, self.top_height*1.5, self.top_radius* .35 , self.bottom_radius)
+    #middle
+    self.top = ConicalCylinder(64, self.top_height*2.5, self.top_radius , self.top_radius* .5)
+    #bottom
+    self.top2 = Cylinder(64, self.top_height * .5, self.top_radius)
+    self.bottom = ConicalCylinder(64, self.bottom_height, self.bottom_radius*1.5, self.bottom_radius )
+        
+  def draw(self, r, g, b):
+    self.bottom.draw(r, g, b)
+    glTranslatef(0, 0, self.bottom_height )
+    self.top2.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*2.5)
+    self.top.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*2)
+    self.top3.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*4.5)
+    self.top4.draw(r, g, b)
+
+class Mushroom5(object):
+  def __init__(self, top_height, top_radius, bottom_height, bottom_radius):
+    self.top_height = top_height
+    self.top_radius = top_radius
+    self.bottom_height = bottom_height
+    self.bottom_radius = bottom_radius
+    #top nob
+    self.top4 = ConicalCylinder(64, self.top_height*1.5, self.top_radius* .75 , self.top_radius*.25)
+    #bottom nob
+    self.top3 = ConicalCylinder(64, self.top_height*1.5, self.top_radius* .35 , self.bottom_radius)
+    #middle
+    self.top = ConicalCylinder(64, self.top_height*2.5, self.top_radius , self.top_radius* .75)
+    #bottom
+    self.top2 = Cylinder(64, self.top_height * .5, self.top_radius)
+    self.bottom = ConicalCylinder(64, self.bottom_height, self.bottom_radius*1.5, self.bottom_radius )
+        
+  def draw(self, r, g, b):
+    self.bottom.draw(r, g, b)
+    glTranslatef(0, 0, self.bottom_height )
+    self.top2.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*2.5)
+    self.top.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*2)
+    self.top3.draw(r, g, b)
+    glTranslatef(0, 0, -self.top_height*4.5)
+    self.top4.draw(r, g, b)
+
+class Mushroom6(object):
+  def __init__(self, top_height, top_radius, bottom_height, bottom_radius):
+    self.top_height = top_height
+    self.top_radius = top_radius
+    self.bottom_height = bottom_height
+    self.bottom_radius = bottom_radius
+    self.top = ConicalCylinder(64, self.top_height*2, self.top_radius , self.top_radius* 1.5)
+    self.bottom = ConicalCylinder(64, self.bottom_height, self.bottom_radius*1.5, self.bottom_radius )
+        
+  def draw(self, r, g, b):
+    self.bottom.draw(r, g, b)
+    glTranslatef(0, 0, self.bottom_height )
+    self.top.draw(r, g, b)
+
+
+

@@ -42,16 +42,77 @@ pyglet.clock.schedule(update)
 def on_draw():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
-    glTranslatef(0, 1, -5)
-    glRotatef(0, 0, 0, 1)
-    glRotatef(0, 0, 1, 0)
-    glRotatef(90, 1, 0, 0)
-    mushroom00.draw(0,1,1)
     
+    #zoom out
+    glTranslatef(0, 0, -20)
+    
+    #rotate around the z-axis
+    glRotatef(0, 0, 0, 1)
+    #rotate around the y-axis
+    glRotatef(0, 0, 1, 0)
+    #rotate around the x-axis
+    glRotatef(0, 1, 0, 0)
+    
+    
+    glPushMatrix()
+    glTranslatef(5, 0, 7)
+    glRotatef(90, 1, 0, 0)
+    mushroom00.draw(1.000, 0.498, 0.314)
+    glPopMatrix()
+
+
+    glPushMatrix()
+    glTranslatef(4, 0, 7)
+    glRotatef(90, 1, 0, 0)
+    mushroom01.draw(0.000, 1.000, 0)
+    glPopMatrix()
+    '''
+    
+    
+    glPushMatrix()
+    glTranslatef(6, 6, 3)
+    glRotatef(90, 1, 0, 0)
+    mushroom00.draw(0.000, 1.000, 0.498)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(6, -12, -4)
+    glRotatef(90, 1, 0, 0)
+    mushroom02.draw(0.000, 1.000, 0.498)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(12, 0, -9)
+    glRotatef(90, 1, 0, 0)
+    mushroom03.draw(0.000, 1.000, 0.498)
+    glPopMatrix()
+    
+    
+    glPushMatrix()
+    glTranslatef(-14, -33, -10)
+    glRotatef(90, 1, 0, 0)
+    mushroom05.draw(1.000, 0.498, 0.314)
+    glPopMatrix()
+    
+    
+    glPushMatrix()
+    glTranslatef(-4, -35, -20)
+    glRotatef(90, 1, 0, 0)
+    mushroom04.draw(1.000, 0.498, 0.314)
+    glPopMatrix()
+
+
+    glPushMatrix()
+    glTranslatef(0, 0, 10)
+    glRotatef(90, 1, 0, 0)
+    mushroom00.draw(1.000, 0.498, 0.314)
+    glPopMatrix()
+    '''
+
 
 def setup():
     # One-time GL setup
-    glClearColor(0, 0, 0, 1)
+    glClearColor(0.000, 0.502, 0.000, 1)
     glColor3f(1, 0, 0)
     glEnable(GL_DEPTH_TEST)
     glEnable(GL_CULL_FACE)
@@ -82,7 +143,12 @@ def setup():
 
 setup()
 # tube = shapelib.ConicalCylinder(64, 2, 1.5, 1)
-mushroom00 = shapelib.Mushroom(.25, 2, 2.5, .75)
+mushroom00 = shapelib.Mushroom4(.25, 2, 2.5, .25)
+mushroom01 = shapelib.Mushroom5(.25, 2, 1.5, .35)
+mushroom02 = shapelib.Mushroom3(2, 9, 9, 1.5)
+mushroom03 = shapelib.Mushroom3(3, 15, 15, 2)
+mushroom04 = shapelib.Mushroom3(3, 15, 30, 1)
+mushroom05 = shapelib.Mushroom4(2, 15, 20, 3)
 rx = ry = rz = 0
 pyglet.app.run()
 # glEnd()
