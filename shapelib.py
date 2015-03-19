@@ -444,5 +444,67 @@ class Mushroom6(object):
     glTranslatef(0, 0, self.bottom_height )
     self.top.draw(r, g, b)
 
+class Triangle(object):
+  def __init__(self, base, height):
+    # create the vertex and normal arrays
+    vertices = []
+    normals = []
+
+    vertices.extend([0, 0, 0])
+    vertices.extend([base, 0, 0])
+    vertices.extend([base*0.5, height, base*0.5])
+    for i in range(3):
+      normals.extend([0,1,-1])
+
+    vertices.extend([0, 0, 0])
+    vertices.extend([0, 0, base])
+    vertices.extend([base*0.5, height, base*0.5])
+    for i in range(3):
+      normals.extend([-1,1,0])
+
+    vertices.extend([base, 0, 0])
+    vertices.extend([0, 0, base])
+    vertices.extend([base*0.5, height, base*0.5])
+    for i in range(3):
+      normals.extend([-1,1,-1])
+
+    vertices.extend([base, 0, 0])
+    vertices.extend([0, 0, base])
+    vertices.extend([0,0,0])
+    for i in range(3):
+      normals.extend([0,-1,0])
+
+    # Create ctypes arrays of the lists
+    vertices = (GLfloat * len(vertices))(*vertices)
+    normals = (GLfloat * len(normals))(*normals)
+
+    # Create a list of triangle indices.
+    indices = []
+    p = 2
+    for i in range(3):
+      indices.extend([i*2, (i*2)+1, (p*2)+1])
+      indices.extend([p*2, i*2, (p*2)+1])
+      p = i
+    indices = (GLuint * len(indices))(*indices)
+
+    # Compile a display list
+    self.list = glGenLists(1)
+    glNewList(self.list, GL_COMPILE)
+
+    glPushClientAttrib(GL_CLIENT_VERTEX_ARRAY_BIT)
+    glEnableClientState(GL_VERTEX_ARRAY)
+    glEnableClientState(GL_NORMAL_ARRAY)
+    glVertexPointer(3, GL_FLOAT, 0, vertices)
+    glNormalPointer(GL_FLOAT, 0, normals)
+    glDrawElements(GL_TRIANGLES, len(indices), GL_UNSIGNED_INT, indices)
+    glPopClientAttrib()
+
+    glEndList()
+        
+  def draw(self, r, g, b):
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, vec(r, g, b, 1))
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, vec(1, 1, 1, 1))
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50)
+    glCallList(self.list)
 
 
