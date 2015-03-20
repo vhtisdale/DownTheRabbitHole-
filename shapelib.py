@@ -376,6 +376,7 @@ class Mushroom3(object):
     glTranslatef(0, 0, -self.top_height*3.5)
     self.top4.draw(r, g, b)
 
+
 class Mushroom4(object):
   def __init__(self, top_height, top_radius, bottom_height, bottom_radius):
     self.top_height = top_height
@@ -383,25 +384,37 @@ class Mushroom4(object):
     self.bottom_height = bottom_height
     self.bottom_radius = bottom_radius
     #top nob
-    self.top4 = ConicalCylinder(64, self.top_height*1.5, self.top_radius* .5 , self.top_radius*.25)
+    self.topNob = ConicalCylinder(64, self.top_height*5, self.top_radius*.75 , self.top_radius*.1)
     #bottom nob
-    self.top3 = ConicalCylinder(64, self.top_height*1.5, self.top_radius* .35 , self.bottom_radius)
+    self.bottomNob = ConicalCylinder(64, self.top_height*2, self.bottom_radius , self.top_radius* .35)
     #middle
-    self.top = ConicalCylinder(64, self.top_height*2.5, self.top_radius , self.top_radius* .5)
+    self.top = Cylinder(64, self.top_height * .5, self.top_radius)
+    self.top2 = ConicalCylinder(64, self.top_height*2.5, self.top_radius , self.top_radius*.75)
     #bottom
-    self.top2 = Cylinder(64, self.top_height * .5, self.top_radius)
     self.bottom = ConicalCylinder(64, self.bottom_height, self.bottom_radius*1.5, self.bottom_radius )
         
   def draw(self, r, g, b):
+
+    
+    glPushMatrix()
     self.bottom.draw(r, g, b)
-    glTranslatef(0, 0, self.bottom_height )
-    self.top2.draw(r, g, b)
+    glPopMatrix()
+    
+    glPushMatrix()
+    self.bottomNob.draw(r,g,b)
+    glPopMatrix()
+    
+    glPushMatrix()
     glTranslatef(0, 0, -self.top_height*2.5)
-    self.top.draw(r, g, b)
-    glTranslatef(0, 0, -self.top_height*2)
-    self.top3.draw(r, g, b)
-    glTranslatef(0, 0, -self.top_height*4.5)
-    self.top4.draw(r, g, b)
+    self.top2.draw(r,g,b)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(0, 0, -self.top_height*7.5)
+    self.topNob.draw(r,g,b)
+    glPopMatrix()
+
+
 
 class Mushroom5(object):
   def __init__(self, top_height, top_radius, bottom_height, bottom_radius):
