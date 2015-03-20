@@ -56,11 +56,12 @@ def on_draw():
     
     #red central
     glPushMatrix()
-    glTranslatef(1, -2, 5)
+    glTranslatef(1, -3, 5)
     glRotatef(90, 1, 0, 0)
     mushroom00.draw(0.545, 0.000, 0.545)
     glPopMatrix()
 
+    '''
     #small guys right to left
     glPushMatrix()
     glTranslatef(5, -3, 10)
@@ -107,7 +108,7 @@ def on_draw():
     mushroom06.draw(0.641, 0.169, 0.886)
     glPopMatrix()
     
-    '''
+    
     glPushMatrix()
     glTranslatef(2, 0, 6)
     glRotatef(90, 1, 0, 0)
