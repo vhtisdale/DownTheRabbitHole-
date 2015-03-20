@@ -313,6 +313,7 @@ class ConicalCylinder(object):
   def draw(self, r, g, b):
     self.lower_fan.draw(r, g, b)
     self.tube.draw(r, g, b)
+    glTranslatef(0,0,self.height)
     glRotatef(180, 0, 0, 0)
     self.upper_fan.draw(r, g, b)
 
@@ -470,7 +471,7 @@ class Triangle(object):
     for i in range(3):
       normals.extend([0,0,-1])
     
-    vertices.extend([0,height,0]])
+    vertices.extend([0,height,0])
     vertices.extend([0, 0, base])
     vertices.extend([0, 0, 0])
     
