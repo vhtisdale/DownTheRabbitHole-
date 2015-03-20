@@ -450,29 +450,31 @@ class Triangle(object):
     vertices = []
     normals = []
 
-    vertices.extend([0, 0, 0])
-    vertices.extend([base, 0, 0])
-    vertices.extend([base*0.5, height, base*0.5])
+    vertices.extend([0,h,0])
+    vertices.extend([base,0,0])
+    vertices.extend([0,0,0])
+    
     for i in range(3):
-      normals.extend([0,1,-1])
-
-    vertices.extend([0, 0, 0])
+      normals.extend([0,0,-1])
+    
+    vertices.extend([0,height,0]])
     vertices.extend([0, 0, base])
-    vertices.extend([base*0.5, height, base*0.5])
+    vertices.extend([0, 0, 0])
+    
     for i in range(3):
-      normals.extend([-1,1,0])
-
-    vertices.extend([base, 0, 0])
-    vertices.extend([0, 0, base])
-    vertices.extend([base*0.5, height, base*0.5])
-    for i in range(3):
-      normals.extend([-1,1,-1])
+      normals.extend([height*base,-.5*base,0])
+    
+    # vertices.extend([0, 0, base])
+    # vertices.extend([base, 0, 0])
+    # vertices.extend([base*0.5, height, base*0.5])
+    # for i in range(3):
+    #   normals.extend([-1,])
 
     vertices.extend([base, 0, 0])
     vertices.extend([0, 0, base])
     vertices.extend([0,0,0])
     for i in range(3):
-      normals.extend([0,-1,0])
+      normals.extend([0,base**2,0])
 
     # Create ctypes arrays of the lists
     vertices = (GLfloat * len(vertices))(*vertices)
