@@ -131,7 +131,189 @@ def on_draw():
     mushroom08.draw(0.641, 0.169, 0.886)
     glPopMatrix()
 
+    #grass
+    
+    #background grass
+    glPushMatrix()
+    glTranslatef(-36, -4.5, -40)
+    glRotatef(75, 0, 1, 0)
+    grass05.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-34, -4.5, -40)
+    glRotatef(90, 0, 1, 0)
+    grass06.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
 
+    glPushMatrix()
+    glTranslatef(-33, -4.5, -40)
+    glRotatef(55, 0, 1, 0)
+    grass05.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(-31, -4.5, -40)
+    glRotatef(75, 0, 1, 0)
+    grass07.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-28, -4.5, -40)
+    glRotatef(75, 0, 1, 0)
+    grass06.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-26, -4.5, -40)
+    glRotatef(55, 0, 1, 0)
+    grass06.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(-25, -4.5, -40)
+    glRotatef(75, 0, 1, 0)
+    grass05.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-23, -4.5, -40)
+    glRotatef(75, 0, 1, 0)
+    grass06.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-21, -4.5, -40)
+    glRotatef(55, 0, 1, 0)
+    grass07.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-20, -4.5, -40)
+    glRotatef(75, 0, 1, 0)
+    grass05.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    #-------
+    #diagonal grass from left to right
+
+    glPushMatrix()
+    glTranslatef(-13, -4.5, -30)
+    glRotatef(60, 0, 1, 0)
+    grass06.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(-5, -3, -4)
+    glRotatef(75, 0, 1, 0)
+    grass01.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-4, -3, -5)
+    glRotatef(75, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(-3, -3, -2)
+    glRotatef(55, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(-2, -3, -10)
+    glRotatef(35, 0, 1, 0)
+    grass01.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(-1, -3, 0)
+    glRotatef(55, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(1, -3, 0)
+    glRotatef(75, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(2, -3, 0)
+    glRotatef(45, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(2.5, -3, 7)
+    glRotatef(65, 0, 1, 0)
+    grass03.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+
+    glPushMatrix()
+    glTranslatef(3.5, -3, 7.5)
+    glRotatef(35, 0, 1, 0)
+    grass03.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(3, -2, 12)
+    glRotatef(55, 0, 1, 0)
+    grass02.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+    
+    glPushMatrix()
+    glTranslatef(3.5, -2.5, 12.5)
+    glRotatef(25, 0, 1, 0)
+    grass03.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(4, -3, 13)
+    glRotatef(90, 0, 1, 0)
+    grass02.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(5, -3, 12)
+    glRotatef(45, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(6, -3, 12)
+    glRotatef(45, 0, 1, 0)
+    grass02.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+
+    #front grass right to left
+
+    glPushMatrix()
+    glTranslatef(-.75, -6.5, 14)
+    glRotatef(35, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(-1.5, -5, 14)
+    glRotatef(45, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(-2, -6, 14)
+    glRotatef(45, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(-2.5, -7, 14)
+    glRotatef(25, 0, 1, 0)
+    grass00.draw(0.545, 0.9, 0.545)
+    glPopMatrix()
 
 def setup():
     # One-time GL setup
@@ -183,6 +365,15 @@ mushroom07 = shapelib.Mushroom3(5, 25, 40, 5)
 mushroom06 = shapelib.Mushroom3(3, 10, 15, 2)
 
 mushroom08 = shapelib.Mushroom5(.25, 1.5, 2.5, .35)
+
+grass00 = shapelib.Triangle(1,4)
+grass01 = shapelib.Triangle(.75,3.5)
+grass02 = shapelib.Triangle(.5,3)
+grass03 = shapelib.Triangle(.5,2)
+grass05 = shapelib.Triangle(2,8)
+grass06 = shapelib.Triangle(2,6)
+grass07 = shapelib.Triangle(2,4)
+
 
 rx = ry = rz = 0
 pyglet.app.run()

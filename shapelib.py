@@ -385,7 +385,7 @@ class Mushroom4(object):
     self.bottom_height = bottom_height
     self.bottom_radius = bottom_radius
     #top nob
-    self.topNob = ConicalCylinder(64, self.top_height*5, self.top_radius*.75 , self.top_radius*.1)
+    self.topNob = ConicalCylinder(64, self.top_height*3, self.top_radius*.75 , self.top_radius*.1)
     #bottom nob
     self.bottomNob = ConicalCylinder(64, self.top_height*2, self.bottom_radius , self.top_radius* .35)
     #middle
@@ -411,7 +411,7 @@ class Mushroom4(object):
     glPopMatrix()
     
     glPushMatrix()
-    glTranslatef(0, 0, -self.top_height*7.5)
+    glTranslatef(0, 0, -self.top_height*5.5)
     self.topNob.draw(r,g,b)
     glPopMatrix()
 
@@ -464,7 +464,7 @@ class Triangle(object):
     vertices = []
     normals = []
 
-    vertices.extend([0,h,0])
+    vertices.extend([0,height,0])
     vertices.extend([base,0,0])
     vertices.extend([0,0,0])
     

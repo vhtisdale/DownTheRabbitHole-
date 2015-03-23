@@ -61,7 +61,7 @@ def on_draw():
     mushroom00.draw(0.545, 0.000, 0.545)
     glPopMatrix()
 
-    '''
+
     #small guys right to left
     glPushMatrix()
     glTranslatef(5, -3, 10)
@@ -101,7 +101,13 @@ def on_draw():
     glPopMatrix()
     
     
+    glPushMatrix()
+    glTranslatef(10,0,0)
+    glRotatef(90, 0, 1, 0)
+    grass00.draw(0.641, 0.969, 0.886)
+    glPopMatrix()
     
+    '''
     glPushMatrix()
     glTranslatef(-50, 0, -80)
     glRotatef(90, 1, 0, 0)
@@ -229,6 +235,8 @@ mushroom07 = shapelib.Mushroom3(5, 25, 40, 5)
 mushroom06 = shapelib.Mushroom3(3, 20, 35, 3)
 
 mushroom08 = shapelib.Mushroom5(.25, 1.5, 2.5, .35)
+
+grass00 = shapelib.Triangle(1,3)
 
 rx = ry = rz = 0
 pyglet.app.run()
